@@ -1,0 +1,37 @@
+{
+  "scenario_id": "SCENARIO_A",
+  "name": "Earth Observation Satellite Downlink to Ground Station",
+  "description": "LEO satellite payload captures multispectral Earth imagery and transmits through intermittent contact windows to Arctic ground station.",
+  "satellite": {
+    "name": "SENTINEL-2A",
+    "norad_id": 40697,
+    "altitude_km": 786.0,
+    "inclination_deg": 98.6
+  },
+  "ground_station": {
+    "name": "Svalbard Satellite Station (SG3)",
+    "latitude_deg": 78.2297,
+    "longitude_deg": 15.4077,
+    "elevation_m": 400.0,
+    "min_elevation_deg": 5.0
+  },
+  "communication_link": {
+    "downlink_rate_mbps": 150.0,
+    "uplink_rate_mbps": 10.0,
+    "packet_loss_rate": 0.015,
+    "interruption_prob_per_pass": 0.05,
+    "buffer_capacity_mb": 512.0
+  },
+  "cryptography": {
+    "kem_algorithm": "ML-KEM-768",
+    "signature_algorithm": "ML-DSA-65",
+    "symmetric_cipher": "AES-256-GCM",
+    "kdf_algorithm": "HKDF-SHA-256",
+    "digest_algorithm": "SHA-256"
+  },
+  "imaging": {
+    "default_tile_width": 256,
+    "default_tile_height": 256,
+    "max_fragment_payload_bytes": 65536
+  }
+}

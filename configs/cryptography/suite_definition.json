@@ -1,0 +1,12 @@
+{
+  "suite_id": "ML-KEM-768/ML-DSA-65/AES-256-GCM/HKDF-SHA256",
+  "security_category": "NIST Security Category 3 (AES-192 equivalent quantum security)",
+  "standards": {
+    "kem": "NIST FIPS 203 (ML-KEM-768)",
+    "digital_signature": "NIST FIPS 204 (ML-DSA-65)",
+    "authenticated_encryption": "NIST SP 800-38D (AES-256-GCM)",
+    "kdf": "RFC 5869 (HKDF-SHA-256)",
+    "hashing": "FIPS 180-4 (SHA-256)"
+  },
+  "implementation_notes": "Implemented in pure Rust via RustCrypto crates (ml-kem, ml-dsa, aes-gcm, hkdf, sha2). Zeroize-on-drop enforced for private keys and derived session secrets."
+}

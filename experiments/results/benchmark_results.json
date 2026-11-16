@@ -1,0 +1,90 @@
+{
+  "cryptography": {
+    "aes_256_gcm": {
+      "dec_throughput_mb_s": 7.886098194313156,
+      "enc_throughput_mb_s": 7.913250316036225,
+      "nonce_size_bytes": 12,
+      "tag_size_bytes": 16
+    },
+    "ml_dsa_65": {
+      "keygen_us": 8436.43,
+      "public_key_bytes": 1952,
+      "sign_us": 29897.82,
+      "signature_bytes": 3309,
+      "verify_us": 7065.45
+    },
+    "ml_kem_768": {
+      "ciphertext_bytes": 1088,
+      "decaps_us": 2611.535,
+      "encaps_us": 2308.345,
+      "keygen_us": 1932.13,
+      "public_key_bytes": 1184
+    }
+  },
+  "watermarking": {
+    "base_psnr": 52.00648352343003,
+    "base_ssim": 0.9941919437276411,
+    "jpeg_qualities": [
+      95,
+      85,
+      75,
+      65,
+      50,
+      35
+    ],
+    "normalized_correlations": [
+      1.0,
+      1.0,
+      0.5181062962530635,
+      0.5380462053310885,
+      0.4776704031908477,
+      0.4453272221528247
+    ],
+    "bit_error_rates": [
+      0.0,
+      0.0,
+      0.41875,
+      0.41875,
+      0.49375,
+      0.55
+    ]
+  },
+  "scheduling": {
+    "FIFO": {
+      "mean_importance": 4.008514114542738,
+      "std_importance": 0.9473456415202118,
+      "mean_payload_mb": 0.109375,
+      "mean_deadline_met": 1.0
+    },
+    "EDF": {
+      "mean_importance": 3.9507048948410945,
+      "std_importance": 1.0107191280610708,
+      "mean_payload_mb": 0.109375,
+      "mean_deadline_met": 1.0
+    },
+    "ImagePriority": {
+      "mean_importance": 5.619169211095367,
+      "std_importance": 0.7111570374963088,
+      "mean_payload_mb": 0.109375,
+      "mean_deadline_met": 1.0
+    },
+    "ContactAware": {
+      "mean_importance": 5.096037911931783,
+      "std_importance": 0.9014579407285772,
+      "mean_payload_mb": 0.10390625,
+      "mean_deadline_met": 1.0
+    },
+    "SecurityAware": {
+      "mean_importance": 2.450082187737125,
+      "std_importance": 0.6556356681405198,
+      "mean_payload_mb": 0.109375,
+      "mean_deadline_met": 1.0
+    },
+    "SAViCS": {
+      "mean_importance": 5.274147485782548,
+      "std_importance": 0.7581148212416228,
+      "mean_payload_mb": 0.109375,
+      "mean_deadline_met": 1.0
+    }
+  }
+}

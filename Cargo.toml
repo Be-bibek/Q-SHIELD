@@ -1,0 +1,63 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/qshield-core",
+    "crates/qshield-crypto",
+    "crates/qshield-image",
+    "crates/qshield-watermark",
+    "crates/qshield-manifest",
+    "crates/qshield-fragment",
+    "crates/qshield-merkle",
+    "crates/qshield-transfer",
+    "crates/qshield-scheduler",
+    "crates/qshield-receiver",
+    "crates/qshield-api",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+authors = ["Q-SHIELD Research Engineering Team"]
+license = "Apache-2.0 OR MIT"
+repository = "https://github.com/qshield/qshield"
+
+[workspace.dependencies]
+# Cryptographic primitives (NIST FIPS 203 & 204 + AES-GCM + HKDF + SHA-2)
+ml-kem = { version = "0.3.4", features = ["getrandom", "zeroize"] }
+ml-dsa = { version = "0.1.2", features = ["getrandom", "zeroize"] }
+aes-gcm = { version = "0.11.1", features = ["getrandom", "zeroize"] }
+hkdf = "0.13.0"
+sha2 = { version = "0.11.1", features = ["zeroize"] }
+rand_core = { version = "0.6", features = ["getrandom"] }
+zeroize = { version = "1.9", features = ["derive"] }
+hybrid-array = "0.4"
+
+# Serialization and Utilities
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "2.0"
+uuid = { version = "1.15", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+hex = "0.4"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Image processing
+image = "0.25"
+
+# Async & Networking
+tokio = { version = "1.43", features = ["full"] }
+axum = { version = "0.8", features = ["json"] }
+tower-http = { version = "0.6", features = ["cors", "trace"] }
+
+# Internal workspace crates
+qshield-core = { path = "crates/qshield-core" }
+qshield-crypto = { path = "crates/qshield-crypto" }
+qshield-image = { path = "crates/qshield-image" }
+qshield-watermark = { path = "crates/qshield-watermark" }
+qshield-manifest = { path = "crates/qshield-manifest" }
+qshield-fragment = { path = "crates/qshield-fragment" }
+qshield-merkle = { path = "crates/qshield-merkle" }
+qshield-transfer = { path = "crates/qshield-transfer" }
+qshield-scheduler = { path = "crates/qshield-scheduler" }
+qshield-receiver = { path = "crates/qshield-receiver" }

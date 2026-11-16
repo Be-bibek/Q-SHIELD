@@ -1,0 +1,24 @@
+[package]
+name = "qshield-crypto"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+
+[dependencies]
+qshield-core = { workspace = true }
+ml-kem = { workspace = true }
+ml-dsa = { workspace = true }
+aes-gcm = { workspace = true }
+hkdf = { workspace = true }
+sha2 = { workspace = true }
+rand_core = { workspace = true }
+zeroize = { workspace = true }
+hybrid-array = { workspace = true }
+serde = { workspace = true }
+hex = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]
+serde_json = { workspace = true }
+

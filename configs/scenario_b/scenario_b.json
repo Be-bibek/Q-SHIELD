@@ -1,0 +1,44 @@
+{
+  "scenario_id": "SCENARIO_B",
+  "name": "Remote Field Device Uplink via LEO Satellite Relay",
+  "description": "Tactical/field edge device captures local reconnaissance imagery and transmits via low-capacity satellite uplink to LEO relay and ground gateway.",
+  "satellite": {
+    "name": "LEO-RELAY-01",
+    "norad_id": 51000,
+    "altitude_km": 550.0,
+    "inclination_deg": 53.0
+  },
+  "field_terminal": {
+    "name": "Field Recon Terminal A",
+    "latitude_deg": 34.0522,
+    "longitude_deg": -118.2437,
+    "elevation_m": 80.0,
+    "min_elevation_deg": 10.0
+  },
+  "ground_gateway": {
+    "name": "Defense Operations Gateway",
+    "latitude_deg": 38.8951,
+    "longitude_deg": -77.0364,
+    "elevation_m": 20.0,
+    "min_elevation_deg": 5.0
+  },
+  "communication_link": {
+    "access_uplink_rate_mbps": 25.0,
+    "feeder_downlink_rate_mbps": 300.0,
+    "packet_loss_rate": 0.03,
+    "interruption_prob_per_pass": 0.08,
+    "buffer_capacity_mb": 256.0
+  },
+  "cryptography": {
+    "kem_algorithm": "ML-KEM-768",
+    "signature_algorithm": "ML-DSA-65",
+    "symmetric_cipher": "AES-256-GCM",
+    "kdf_algorithm": "HKDF-SHA-256",
+    "digest_algorithm": "SHA-256"
+  },
+  "imaging": {
+    "default_tile_width": 128,
+    "default_tile_height": 128,
+    "max_fragment_payload_bytes": 16384
+  }
+}
