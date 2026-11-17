@@ -77,6 +77,8 @@ def evaluate_tamper_localization(ground_truth_mask: np.ndarray, detected_mask: n
     recall = float(tp / (tp + fn)) if (tp + fn) > 0 else 1.0
     f1 = float(2 * precision * recall / (precision + recall)) if (precision + recall) > 0 else 0.0
     fpr = float(fp / (fp + tn)) if (fp + tn) > 0 else 0.0
+    iou = float(tp / (tp + fp + fn)) if (tp + fp + fn) > 0 else 1.0
+    accuracy = float((tp + tn) / (tp + tn + fp + fn)) if (tp + tn + fp + fn) > 0 else 1.0
 
     return {
         "true_positives": int(tp),
@@ -86,5 +88,7 @@ def evaluate_tamper_localization(ground_truth_mask: np.ndarray, detected_mask: n
         "precision": precision,
         "recall": recall,
         "f1_score": f1,
+        "iou": iou,
+        "accuracy": accuracy,
         "false_positive_rate": fpr,
     }

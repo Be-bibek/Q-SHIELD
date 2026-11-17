@@ -1,0 +1,37 @@
+{
+  "cpu": {
+    "model": "AMD Ryzen AI 9 HX 370 w/ Radeon 890M",
+    "microarchitecture": "Zen 5 / Zen 5c",
+    "physical_cores": 12,
+    "logical_processors": 24,
+    "max_clock_mhz": 5100,
+    "isa_extensions": ["AVX-512", "AVX2", "AES-NI", "VAES", "CLMUL", "SHA-NI"]
+  },
+  "memory": {
+    "total_ram_gb": 16.0,
+    "type": "LPDDR5x"
+  },
+  "os": {
+    "system": "Microsoft Windows 11 Home",
+    "kernel_version": "10.0.26200",
+    "arch": "x86_64"
+  },
+  "toolchain": {
+    "rustc": "1.94.1 (e408947bf 2026-03-25)",
+    "cargo": "1.94.1 (29ea6fb6a 2026-03-24)",
+    "python": "3.14.3"
+  },
+  "cryptographic_libraries": {
+    "ml_kem": "0.3.4 (RustCrypto, FIPS 203)",
+    "ml_dsa": "0.1.2 (RustCrypto, FIPS 204)",
+    "aes_gcm": "0.11.1 (RustCrypto, NIST SP 800-38D with GHASH)",
+    "hkdf": "0.13.0 (RustCrypto, RFC 5869)",
+    "sha2": "0.11.1 (RustCrypto, FIPS 180-4)"
+  },
+  "build_profile": {
+    "opt_level": 3,
+    "lto": "thin",
+    "codegen_units": 16,
+    "panic": "unwind"
+  }
+}

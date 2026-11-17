@@ -1,15 +1,20 @@
 //! AES-256-GCM Authenticated Encryption with Associated Data (AEAD) and Nonce Management.
+//!
+//! Cryptographic Standard: NIST SP 800-38D.
+//! Authentication: Uses GHASH over GF(2^128) for the 128-bit authentication tag (never Poly1305).
+//! Nonce Format: 96-bit (12 bytes) composed of [4-byte session salt || 8-byte monotonic counter].
 
 use aes_gcm::{
     aead::{Aead, KeyInit, Payload},
     Aes256Gcm, Nonce,
 };
 use qshield_core::{QShieldError, Result};
+use rand_core::{OsRng, RngCore};
 use std::collections::HashSet;
 use std::sync::{Arc, Mutex};
 
 pub const NONCE_SIZE: usize = 12; // 96 bits standard GCM nonce
-pub const TAG_SIZE: usize = 16;   // 128 bits authentication tag
+pub const TAG_SIZE: usize = 16;   // 128 bits GHASH authentication tag
 
 /// Thread-safe Nonce Manager that enforces monotonic nonce allocation and prevents reuse
 #[derive(Clone, Default)]
@@ -26,6 +31,27 @@ impl NonceManager {
             counter: Arc::new(Mutex::new(0)),
             session_prefix,
         }
+    }
+
+    /// Instantiate with cryptographically secure random 4-byte session salt
+    pub fn random_session() -> Self {
+        let mut prefix = [0u8; 4];
+        OsRng.fill_bytes(&mut prefix);
+        Self::new(prefix)
+    }
+
+    /// Restore nonce manager from persistent storage with saved counter
+    pub fn restore(session_prefix: [u8; 4], initial_counter: u64) -> Self {
+        Self {
+            used_nonces: Arc::new(Mutex::new(HashSet::new())),
+            counter: Arc::new(Mutex::new(initial_counter)),
+            session_prefix,
+        }
+    }
+
+    /// Read current monotonic counter value for persistence checkpoints
+    pub fn current_counter(&self) -> u64 {
+        *self.counter.lock().unwrap()
     }
 
     /// Allocate next deterministic unique 96-bit nonce: [4 bytes prefix || 8 bytes monotonic counter]

@@ -1,7 +1,7 @@
 //! Receiver session, fragment verification, and progressive partial image reconstruction.
 
 use qshield_core::{
-    ImageId, QShieldError, Result, TileCoordinate, TileId,
+    FragmentId, ImageId, QShieldError, Result, TileCoordinate, TileId,
     TileVerificationStatus, TransferId,
 };
 use qshield_crypto::{
@@ -11,7 +11,55 @@ use qshield_fragment::EncryptedFragment;
 use qshield_image::ImageTile;
 use qshield_manifest::SignedManifest;
 use qshield_merkle::MerkleLeafBinding;
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
+
+/// Persistent Replay Protection Tracker preventing duplicate or replayed fragments
+#[derive(Debug, Clone, Default)]
+pub struct ReplayProtectionTracker {
+    pub seen_fragments: HashSet<(TransferId, FragmentId)>,
+    pub seen_sequences: HashSet<(TransferId, u32)>,
+    pub replayed_fragment_count: u32,
+}
+
+impl ReplayProtectionTracker {
+    pub fn new() -> Self {
+        Self::default()
+    }
+
+    /// Check and record fragment. Returns Err(QShieldError::ReplayAttackDetected) if previously seen.
+    pub fn check_and_record(
+        &mut self,
+        transfer_id: TransferId,
+        fragment_id: FragmentId,
+        sequence_number: u32,
+    ) -> Result<()> {
+        let frag_key = (transfer_id, fragment_id);
+        if self.seen_fragments.contains(&frag_key) {
+            self.replayed_fragment_count += 1;
+            return Err(QShieldError::ReplayAttackDetected(format!(
+                "Replay detected: Fragment {} in transfer {} was already received and processed",
+                fragment_id, transfer_id
+            )));
+        }
+
+        let seq_key = (transfer_id, sequence_number);
+        if self.seen_sequences.contains(&seq_key) {
+            self.replayed_fragment_count += 1;
+            return Err(QShieldError::ReplayAttackDetected(format!(
+                "Replay detected: Sequence number {} in transfer {} was already received",
+                sequence_number, transfer_id
+            )));
+        }
+
+        self.seen_fragments.insert(frag_key);
+        self.seen_sequences.insert(seq_key);
+        Ok(())
+    }
+
+    pub fn replayed_count(&self) -> u32 {
+        self.replayed_fragment_count
+    }
+}
 
 /// Assembly buffer for an individual image tile
 struct TileAssemblyBuffer {
@@ -67,6 +115,7 @@ pub struct VerifiableReceiverSession {
     pub tile_statuses: HashMap<TileId, TileVerificationStatus>,
     pub verified_tiles: HashMap<TileId, ImageTile>,
     tile_buffers: HashMap<TileId, TileAssemblyBuffer>,
+    pub replay_tracker: ReplayProtectionTracker,
     pub rejected_fragment_count: u32,
     pub rejected_tile_count: u32,
 }
@@ -83,6 +132,7 @@ impl VerifiableReceiverSession {
             tile_statuses: HashMap::new(),
             verified_tiles: HashMap::new(),
             tile_buffers: HashMap::new(),
+            replay_tracker: ReplayProtectionTracker::new(),
             rejected_fragment_count: 0,
             rejected_tile_count: 0,
         }
@@ -158,6 +208,16 @@ impl VerifiableReceiverSession {
                 self.transfer_id,
                 self.image_id
             )));
+        }
+
+        // Validation 2: Replay attack prevention check against persistent sequence & fragment records
+        if let Err(e) = self.replay_tracker.check_and_record(
+            fragment.header.transfer_id,
+            fragment.header.fragment_id,
+            fragment.header.sequence_number,
+        ) {
+            self.rejected_fragment_count += 1;
+            return Err(e);
         }
 
         let session_key = self
@@ -439,5 +499,55 @@ mod tests {
                 assert_eq!(full_img[idx], 200);
             }
         }
+    }
+
+    #[test]
+    fn test_replay_attack_detection() {
+        let tid = TransferId::new_v4();
+        let iid = ImageId::new("img_test_replay");
+        let dims = qshield_core::ImageDimensions { width: 32, height: 32, channels: 3, bit_depth: 8 };
+        let coord0 = TileCoordinate { tile_id: TileId(0), row: 0, col: 0, x: 0, y: 0, width: 32, height: 32 };
+        let tile0 = ImageTile::new(coord0, vec![100u8; 32 * 32 * 3], 3);
+        let h0 = hash_tile(&tile0.data);
+        let leaf0 = MerkleLeafBinding::new(tid, &iid, &coord0, h0, "RGB8");
+        let merkle_tree = MerkleTree::build(vec![leaf0]).unwrap();
+        let root = merkle_tree.root_hash();
+
+        let manifest = ImageManifest::new(
+            tid, iid.clone(), "SAT_01", "GS_SVALBARD", dims,
+            qshield_core::ImageFormat::Png, [0x55; 32], vec![coord0], vec![h0], root, None, 1.0,
+        ).unwrap();
+        let sat_sk = PqcSigningKey::generate();
+        let signed_manifest = manifest.sign(&sat_sk);
+
+        let mut receiver = VerifiableReceiverSession::new("GS_SVALBARD");
+        let rcvr_pk = receiver.public_key();
+        let (kem_ct, shared_secret) = qshield_crypto::encapsulate(&rcvr_pk).unwrap();
+        let sat_ctx = KeyDerivationContext::standard("SAT_01", "GS_SVALBARD", tid);
+        let session_key = derive_session_key(shared_secret.as_bytes(), &sat_ctx);
+        receiver.init_session(&kem_ct, &signed_manifest).unwrap();
+
+        let nonce_mgr = NonceManager::new([0x05, 0x06, 0x07, 0x08]);
+        let mut seq = 0u32;
+        let mut frag_counter = 0u32;
+        let frag_cfg = FragmentationConfig { max_fragment_payload_size: 4096 };
+        let proof0 = merkle_tree.generate_proof(0).unwrap();
+        let frags0 = fragment_and_encrypt_tile(
+            &tile0, tid, &iid, 3072, &mut seq, &mut frag_counter, &session_key, &nonce_mgr, Some(proof0), &frag_cfg,
+        ).unwrap();
+
+        // Deliver first fragment legitimately
+        assert!(receiver.process_fragment(&frags0[0]).is_ok());
+
+        // Attempt to replay the exact same fragment (Replay Attack)
+        let replay_result = receiver.process_fragment(&frags0[0]);
+        assert!(replay_result.is_err());
+        match replay_result.unwrap_err() {
+            QShieldError::ReplayAttackDetected(msg) => {
+                assert!(msg.contains("Replay detected"));
+            }
+            other => panic!("Expected ReplayAttackDetected error, got {:?}", other),
+        }
+        assert_eq!(receiver.replay_tracker.replayed_count(), 1);
     }
 }

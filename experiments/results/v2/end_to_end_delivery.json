@@ -1,0 +1,33 @@
+{
+  "passes": [
+    {
+      "pass": 1,
+      "attempted": 21,
+      "delivered_this_pass": 21,
+      "cumulative": 21,
+      "retransmissions": 1,
+      "tiles_complete": 7,
+      "lost": 0
+    },
+    {
+      "pass": 2,
+      "attempted": 19,
+      "delivered_this_pass": 19,
+      "cumulative": 40,
+      "retransmissions": 1,
+      "tiles_complete": 13,
+      "lost": 0
+    },
+    {
+      "pass": 3,
+      "attempted": 8,
+      "delivered_this_pass": 8,
+      "cumulative": 48,
+      "retransmissions": 0,
+      "tiles_complete": 16,
+      "lost": 0
+    }
+  ],
+  "total_fragments": 48,
+  "link_loss_rate": 0.03
+}

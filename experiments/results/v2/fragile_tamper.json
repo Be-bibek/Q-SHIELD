@@ -1,0 +1,44 @@
+{
+  "no_tamper_false_positive_rate": 0.0,
+  "tamper_experiments": [
+    {
+      "attack": "object_insertion_32x32",
+      "true_positives": 1024,
+      "false_positives": 0,
+      "true_negatives": 64512,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "iou": 1.0,
+      "accuracy": 1.0,
+      "false_positive_rate": 0.0
+    },
+    {
+      "attack": "copy_move_24x24",
+      "true_positives": 576,
+      "false_positives": 448,
+      "true_negatives": 64512,
+      "false_negatives": 0,
+      "precision": 0.5625,
+      "recall": 1.0,
+      "f1_score": 0.72,
+      "iou": 0.5625,
+      "accuracy": 0.9931640625,
+      "false_positive_rate": 0.006896551724137931
+    },
+    {
+      "attack": "region_replacement_64x64",
+      "true_positives": 4096,
+      "false_positives": 0,
+      "true_negatives": 61440,
+      "false_negatives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "iou": 1.0,
+      "accuracy": 1.0,
+      "false_positive_rate": 0.0
+    }
+  ]
+}

@@ -10,13 +10,11 @@ qshield-core = { workspace = true }
 qshield-crypto = { workspace = true }
 qshield-fragment = { workspace = true }
 qshield-manifest = { workspace = true }
+qshield-image = { workspace = true }
+qshield-merkle = { workspace = true }
+qshield-receiver = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
 chrono = { workspace = true }
 thiserror = { workspace = true }
-
-[dev-dependencies]
-qshield-image = { workspace = true }
-qshield-merkle = { workspace = true }
-qshield-receiver = { workspace = true }
 

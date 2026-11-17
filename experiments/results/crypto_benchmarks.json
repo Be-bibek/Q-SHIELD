@@ -1,22 +1,22 @@
 {
   "aes_256_gcm": {
-    "dec_throughput_mb_s": 7.861845660472522,
-    "enc_throughput_mb_s": 7.883633433195213,
+    "dec_throughput_mb_s": 7.804626107835459,
+    "enc_throughput_mb_s": 7.849670939282331,
     "nonce_size_bytes": 12,
     "tag_size_bytes": 16
   },
   "ml_dsa_65": {
-    "keygen_us": 8397.815,
+    "keygen_us": 8521.53,
     "public_key_bytes": 1952,
-    "sign_us": 5027.855,
+    "sign_us": 9063.925,
     "signature_bytes": 3309,
-    "verify_us": 6882.495
+    "verify_us": 6955.88
   },
   "ml_kem_768": {
     "ciphertext_bytes": 1088,
-    "decaps_us": 2620.41,
-    "encaps_us": 2355.57,
-    "keygen_us": 2010.5,
+    "decaps_us": 2661.87,
+    "encaps_us": 2330.575,
+    "keygen_us": 1984.115,
     "public_key_bytes": 1184
   }
 }

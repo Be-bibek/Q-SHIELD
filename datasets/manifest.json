@@ -1,0 +1,26 @@
+{
+  "version": "1.0",
+  "generated_utc": "2026-11-17T16:41:49.961448",
+  "entries": [
+    {
+      "file": "datasets\\satellite\\sentinel2_sample.png",
+      "sha256": "261b6e82038c4bf54c82edb44b93f2eb78db183373bc4defe14d21a9cd113bd1",
+      "size_bytes": 104006,
+      "sensor": "Sentinel-2A MSI Level-1C",
+      "source": "ESA Copernicus Open Access Hub",
+      "bands": "RGB composite from Band 4 (Red), Band 3 (Green), Band 2 (Blue)",
+      "resolution": "10 m/pixel (resampled to 256x256 for prototype)",
+      "license": "CC-BY-4.0 (Sentinel-2) / Synthetic (ground)"
+    },
+    {
+      "file": "datasets\\ground\\field_recon_sample.png",
+      "sha256": "108f14aac1906003c37fd977bdd95c5780620f001b436de03d3ac4b2c574c827",
+      "size_bytes": 3034,
+      "sensor": "Ground-based reconnaissance camera",
+      "source": "Synthetic/simulated",
+      "bands": "RGB natural color",
+      "resolution": "Variable",
+      "license": "CC-BY-4.0 (Sentinel-2) / Synthetic (ground)"
+    }
+  ]
+}

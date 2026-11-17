@@ -16,7 +16,15 @@ from .attacks import (
     apply_jpeg_compression,
     apply_cropping,
     apply_gaussian_noise,
+    apply_salt_and_pepper_noise,
     apply_resizing,
+    apply_rotation,
+    apply_gaussian_blur,
+    apply_sharpening,
+    apply_contrast_adjustment,
+    apply_format_conversion,
+    generate_synthetic_tamper_insertion,
+    generate_synthetic_tamper_copy_move,
 )
 
 __all__ = [
@@ -32,5 +40,13 @@ __all__ = [
     "apply_jpeg_compression",
     "apply_cropping",
     "apply_gaussian_noise",
+    "apply_salt_and_pepper_noise",
     "apply_resizing",
+    "apply_rotation",
+    "apply_gaussian_blur",
+    "apply_sharpening",
+    "apply_contrast_adjustment",
+    "apply_format_conversion",
+    "generate_synthetic_tamper_insertion",
+    "generate_synthetic_tamper_copy_move",
 ]

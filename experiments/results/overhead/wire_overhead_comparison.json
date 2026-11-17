@@ -1,0 +1,114 @@
+[
+  {
+    "classical_ecc_per_frag": {
+      "overhead_bytes": 239,
+      "overhead_percent": 5.8349609375,
+      "wire_bytes": 4335
+    },
+    "naive_pqc_per_frag": {
+      "overhead_bytes": 5691,
+      "overhead_percent": 138.9404296875,
+      "wire_bytes": 9787
+    },
+    "no_security": {
+      "overhead_bytes": 0,
+      "overhead_percent": 0.0,
+      "wire_bytes": 4096
+    },
+    "payload_bytes": 4096,
+    "qshield_amortized_intermediate": {
+      "overhead_bytes": 130,
+      "overhead_percent": 3.173828125,
+      "wire_bytes": 4226
+    },
+    "qshield_amortized_milestone_with_proof": {
+      "overhead_bytes": 270,
+      "overhead_percent": 6.591796875,
+      "wire_bytes": 4366
+    }
+  },
+  {
+    "classical_ecc_per_frag": {
+      "overhead_bytes": 239,
+      "overhead_percent": 1.458740234375,
+      "wire_bytes": 16623
+    },
+    "naive_pqc_per_frag": {
+      "overhead_bytes": 5691,
+      "overhead_percent": 34.735107421875,
+      "wire_bytes": 22075
+    },
+    "no_security": {
+      "overhead_bytes": 0,
+      "overhead_percent": 0.0,
+      "wire_bytes": 16384
+    },
+    "payload_bytes": 16384,
+    "qshield_amortized_intermediate": {
+      "overhead_bytes": 130,
+      "overhead_percent": 0.79345703125,
+      "wire_bytes": 16514
+    },
+    "qshield_amortized_milestone_with_proof": {
+      "overhead_bytes": 270,
+      "overhead_percent": 1.64794921875,
+      "wire_bytes": 16654
+    }
+  },
+  {
+    "classical_ecc_per_frag": {
+      "overhead_bytes": 239,
+      "overhead_percent": 0.36468505859375,
+      "wire_bytes": 65775
+    },
+    "naive_pqc_per_frag": {
+      "overhead_bytes": 5691,
+      "overhead_percent": 8.68377685546875,
+      "wire_bytes": 71227
+    },
+    "no_security": {
+      "overhead_bytes": 0,
+      "overhead_percent": 0.0,
+      "wire_bytes": 65536
+    },
+    "payload_bytes": 65536,
+    "qshield_amortized_intermediate": {
+      "overhead_bytes": 130,
+      "overhead_percent": 0.1983642578125,
+      "wire_bytes": 65666
+    },
+    "qshield_amortized_milestone_with_proof": {
+      "overhead_bytes": 270,
+      "overhead_percent": 0.4119873046875,
+      "wire_bytes": 65806
+    }
+  },
+  {
+    "classical_ecc_per_frag": {
+      "overhead_bytes": 239,
+      "overhead_percent": 0.0911712646484375,
+      "wire_bytes": 262383
+    },
+    "naive_pqc_per_frag": {
+      "overhead_bytes": 5691,
+      "overhead_percent": 2.1709442138671875,
+      "wire_bytes": 267835
+    },
+    "no_security": {
+      "overhead_bytes": 0,
+      "overhead_percent": 0.0,
+      "wire_bytes": 262144
+    },
+    "payload_bytes": 262144,
+    "qshield_amortized_intermediate": {
+      "overhead_bytes": 130,
+      "overhead_percent": 0.049591064453125,
+      "wire_bytes": 262274
+    },
+    "qshield_amortized_milestone_with_proof": {
+      "overhead_bytes": 270,
+      "overhead_percent": 0.102996826171875,
+      "wire_bytes": 262414
+    }
+  }
+]

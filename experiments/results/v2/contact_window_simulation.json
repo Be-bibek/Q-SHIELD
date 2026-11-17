@@ -1,0 +1,22 @@
+{
+  "satellite": "Sentinel-2A",
+  "norad_id": 40697,
+  "ground_station": {
+    "name": "Svalbard",
+    "lat_deg": 78.2,
+    "lon_deg": 15.4
+  },
+  "orbital_period_min": 100.6,
+  "simulation_duration_h": 24,
+  "elevation_mask_deg": 5.0,
+  "note": "Simulated representative contact windows. For exact contacts, run python/qshield_orbit/orbit_propagator.py with current TLE.",
+  "contacts": [
+    {
+      "aos_min": 192.57368029059364,
+      "los_min": 204.29596885010625,
+      "duration_min": 11.722288559512602,
+      "max_elevation_deg": 23.085576785933075,
+      "data_delivered_mb": 5.170921271052837
+    }
+  ]
+}

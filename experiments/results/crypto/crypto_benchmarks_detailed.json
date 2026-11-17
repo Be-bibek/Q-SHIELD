@@ -1,0 +1,344 @@
+{
+  "aes_256_gcm": {
+    "decryption_by_payload": [
+      {
+        "payload_bytes": 1024,
+        "stats": {
+          "ci95_lower_us": 0.7055986668055274,
+          "ci95_upper_us": 0.7184013331944741,
+          "iterations": 100,
+          "max_us": 0.7999999999999999,
+          "mean_us": 0.7120000000000007,
+          "median_us": 0.7,
+          "min_us": 0.7,
+          "p95_us": 0.7999999999999999,
+          "p99_us": 0.7999999999999999,
+          "std_us": 0.03265986323710904,
+          "throughput_mb_s": 1371.5765449438188
+        }
+      },
+      {
+        "payload_bytes": 4096,
+        "stats": {
+          "ci95_lower_us": 1.5182545575505644,
+          "ci95_upper_us": 1.5357454424494323,
+          "iterations": 100,
+          "max_us": 1.5999999999999999,
+          "mean_us": 1.5269999999999984,
+          "median_us": 1.5,
+          "min_us": 1.5,
+          "p95_us": 1.5999999999999999,
+          "p99_us": 1.5999999999999999,
+          "std_us": 0.04461960433384731,
+          "throughput_mb_s": 2558.120497707927
+        }
+      },
+      {
+        "payload_bytes": 16384,
+        "stats": {
+          "ci95_lower_us": 4.685669995855854,
+          "ci95_upper_us": 4.942330004144145,
+          "iterations": 100,
+          "max_us": 10.8,
+          "mean_us": 4.813999999999999,
+          "median_us": 4.7,
+          "min_us": 4.7,
+          "p95_us": 4.8,
+          "p99_us": 10.8,
+          "std_us": 0.6547449191027824,
+          "throughput_mb_s": 3245.7415870378068
+        }
+      },
+      {
+        "payload_bytes": 65536,
+        "stats": {
+          "ci95_lower_us": 22.41725708806085,
+          "ci95_upper_us": 25.14274291193916,
+          "iterations": 100,
+          "max_us": 42.6,
+          "mean_us": 23.780000000000005,
+          "median_us": 21.65,
+          "min_us": 17.900000000000002,
+          "p95_us": 37.5,
+          "p99_us": 42.6,
+          "std_us": 6.952769958873232,
+          "throughput_mb_s": 2628.2590412111012
+        }
+      },
+      {
+        "payload_bytes": 262144,
+        "stats": {
+          "ci95_lower_us": 78.2938570051028,
+          "ci95_upper_us": 82.87214299489717,
+          "iterations": 100,
+          "max_us": 116.7,
+          "mean_us": 80.58299999999998,
+          "median_us": 72.2,
+          "min_us": 71.8,
+          "p95_us": 99.5,
+          "p99_us": 116.7,
+          "std_us": 11.679300994373408,
+          "throughput_mb_s": 3102.391323231948
+        }
+      },
+      {
+        "payload_bytes": 1048576,
+        "stats": {
+          "ci95_lower_us": 395.5436306041476,
+          "ci95_upper_us": 407.7297027291856,
+          "iterations": 30,
+          "max_us": 471.40000000000003,
+          "mean_us": 401.6366666666666,
+          "median_us": 398.4,
+          "min_us": 380.20000000000005,
+          "p95_us": 420.79999999999995,
+          "p99_us": 471.40000000000003,
+          "std_us": 17.027006607827126,
+          "throughput_mb_s": 2489.8125171174615
+        }
+      },
+      {
+        "payload_bytes": 10485760,
+        "stats": {
+          "ci95_lower_us": 3719.0859118215258,
+          "ci95_upper_us": 3762.0140881784746,
+          "iterations": 10,
+          "max_us": 3792.2,
+          "mean_us": 3740.55,
+          "median_us": 3743.1000000000004,
+          "min_us": 3677.4,
+          "p95_us": 3792.2,
+          "p99_us": 3792.2,
+          "std_us": 34.63030946054817,
+          "throughput_mb_s": 2673.4036438491667
+        }
+      }
+    ],
+    "encryption_by_payload": [
+      {
+        "payload_bytes": 1024,
+        "stats": {
+          "ci95_lower_us": 0.6904934488336144,
+          "ci95_upper_us": 0.7035065511663877,
+          "iterations": 100,
+          "max_us": 0.7999999999999999,
+          "mean_us": 0.6970000000000011,
+          "median_us": 0.7,
+          "min_us": 0.6,
+          "p95_us": 0.7,
+          "p99_us": 0.7999999999999999,
+          "std_us": 0.03319668962442194,
+          "throughput_mb_s": 1401.0939741750337
+        }
+      },
+      {
+        "payload_bytes": 4096,
+        "stats": {
+          "ci95_lower_us": 1.509465751543554,
+          "ci95_upper_us": 1.7665342484564401,
+          "iterations": 100,
+          "max_us": 7.6,
+          "mean_us": 1.637999999999997,
+          "median_us": 1.5999999999999999,
+          "min_us": 1.5,
+          "p95_us": 1.5999999999999999,
+          "p99_us": 7.6,
+          "std_us": 0.6557869819206277,
+          "throughput_mb_s": 2384.768009768014
+        }
+      },
+      {
+        "payload_bytes": 16384,
+        "stats": {
+          "ci95_lower_us": 4.668116013629548,
+          "ci95_upper_us": 4.879883986370442,
+          "iterations": 100,
+          "max_us": 9.5,
+          "mean_us": 4.773999999999995,
+          "median_us": 4.7,
+          "min_us": 4.6,
+          "p95_us": 4.8,
+          "p99_us": 9.5,
+          "std_us": 0.5402244202573817,
+          "throughput_mb_s": 3272.93674067868
+        }
+      },
+      {
+        "payload_bytes": 65536,
+        "stats": {
+          "ci95_lower_us": 23.893866332824537,
+          "ci95_upper_us": 26.53013366717545,
+          "iterations": 100,
+          "max_us": 46.0,
+          "mean_us": 25.211999999999993,
+          "median_us": 22.799999999999997,
+          "min_us": 18.3,
+          "p95_us": 35.7,
+          "p99_us": 46.0,
+          "std_us": 6.725171771303344,
+          "throughput_mb_s": 2478.9782643185795
+        }
+      },
+      {
+        "payload_bytes": 262144,
+        "stats": {
+          "ci95_lower_us": 77.55697147513297,
+          "ci95_upper_us": 83.39902852486702,
+          "iterations": 100,
+          "max_us": 122.3,
+          "mean_us": 80.478,
+          "median_us": 70.75,
+          "min_us": 69.2,
+          "p95_us": 116.80000000000001,
+          "p99_us": 122.3,
+          "std_us": 14.903206759525673,
+          "throughput_mb_s": 3106.4390268147818
+        }
+      },
+      {
+        "payload_bytes": 1048576,
+        "stats": {
+          "ci95_lower_us": 401.5703821982796,
+          "ci95_upper_us": 412.25628446838687,
+          "iterations": 30,
+          "max_us": 439.8,
+          "mean_us": 406.91333333333324,
+          "median_us": 404.79999999999995,
+          "min_us": 381.09999999999997,
+          "p95_us": 433.40000000000003,
+          "p99_us": 439.8,
+          "std_us": 14.93089214447299,
+          "throughput_mb_s": 2457.5257630617502
+        }
+      },
+      {
+        "payload_bytes": 10485760,
+        "stats": {
+          "ci95_lower_us": 3631.549333689199,
+          "ci95_upper_us": 4019.4106663108,
+          "iterations": 10,
+          "max_us": 4711.9,
+          "mean_us": 3825.4799999999996,
+          "median_us": 3724.35,
+          "min_us": 3690.3,
+          "p95_us": 4711.9,
+          "p99_us": 4711.9,
+          "std_us": 312.88908862051693,
+          "throughput_mb_s": 2614.0510471888497
+        }
+      }
+    ],
+    "nonce_bytes": 12,
+    "tag_bytes": 16
+  },
+  "environment": {
+    "aead_library": "RustCrypto aes-gcm 0.11.1 (GHASH)",
+    "arch": "x86_64",
+    "os": "windows",
+    "pqc_library": "RustCrypto ml-kem 0.3.4, ml-dsa 0.1.2",
+    "rustc_profile": "release"
+  },
+  "hkdf_sha256": {
+    "derivation": {
+      "ci95_lower_us": 0.6117809309827286,
+      "ci95_upper_us": 0.6222190690172701,
+      "iterations": 200,
+      "max_us": 0.7,
+      "mean_us": 0.6169999999999993,
+      "median_us": 0.6,
+      "min_us": 0.6,
+      "p95_us": 0.7,
+      "p99_us": 0.7,
+      "std_us": 0.03765754177135446,
+      "throughput_mb_s": null
+    },
+    "derived_key_bytes": 32
+  },
+  "ml_dsa_65": {
+    "keygen": {
+      "ci95_lower_us": 247.52284020320596,
+      "ci95_upper_us": 252.8931597967941,
+      "iterations": 100,
+      "max_us": 353.5,
+      "mean_us": 250.20800000000003,
+      "median_us": 247.9,
+      "min_us": 239.9,
+      "p95_us": 268.0,
+      "p99_us": 353.5,
+      "std_us": 13.699794881602418,
+      "throughput_mb_s": null
+    },
+    "public_key_bytes": 1952,
+    "signature_bytes": 3309,
+    "signing": {
+      "ci95_lower_us": 717.4682943197548,
+      "ci95_upper_us": 722.8057056802455,
+      "iterations": 100,
+      "max_us": 819.8,
+      "mean_us": 720.1370000000002,
+      "median_us": 717.5,
+      "min_us": 712.1,
+      "p95_us": 743.1999999999999,
+      "p99_us": 819.8,
+      "std_us": 13.61584530737417,
+      "throughput_mb_s": null
+    },
+    "verification": {
+      "ci95_lower_us": 169.43317192556205,
+      "ci95_upper_us": 171.15282807443825,
+      "iterations": 100,
+      "max_us": 203.7,
+      "mean_us": 170.29300000000015,
+      "median_us": 169.1,
+      "min_us": 168.5,
+      "p95_us": 173.9,
+      "p99_us": 203.7,
+      "std_us": 4.386877930806598,
+      "throughput_mb_s": null
+    }
+  },
+  "ml_kem_768": {
+    "ciphertext_bytes": 1088,
+    "decapsulation": {
+      "ci95_lower_us": 75.18946021087307,
+      "ci95_upper_us": 75.79053978912701,
+      "iterations": 100,
+      "max_us": 82.7,
+      "mean_us": 75.49000000000004,
+      "median_us": 75.0,
+      "min_us": 74.9,
+      "p95_us": 79.9,
+      "p99_us": 82.7,
+      "std_us": 1.5333662710559801,
+      "throughput_mb_s": null
+    },
+    "encapsulation": {
+      "ci95_lower_us": 62.070921056083925,
+      "ci95_upper_us": 64.31507894391606,
+      "iterations": 100,
+      "max_us": 106.2,
+      "mean_us": 63.19299999999999,
+      "median_us": 61.699999999999996,
+      "min_us": 61.50000000000001,
+      "p95_us": 71.1,
+      "p99_us": 106.2,
+      "std_us": 5.724892571000346,
+      "throughput_mb_s": null
+    },
+    "keygen": {
+      "ci95_lower_us": 54.299376426438734,
+      "ci95_upper_us": 55.284623573561284,
+      "iterations": 100,
+      "max_us": 63.6,
+      "mean_us": 54.79200000000001,
+      "median_us": 53.900000000000006,
+      "min_us": 53.1,
+      "p95_us": 62.0,
+      "p99_us": 63.6,
+      "std_us": 2.51338557939427,
+      "throughput_mb_s": null
+    },
+    "public_key_bytes": 1184,
+    "shared_secret_bytes": 32
+  }
+}

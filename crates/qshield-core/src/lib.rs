@@ -39,6 +39,9 @@ pub enum QShieldError {
     #[error("Receiver verification error: {0}")]
     ReceiverError(String),
 
+    #[error("Replay attack detected: {0}")]
+    ReplayAttackDetected(String),
+
     #[error("Serialization error: {0}")]
     SerializationError(#[from] serde_json::Error),
 
